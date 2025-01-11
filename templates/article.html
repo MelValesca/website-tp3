@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block title %}Article{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Article identifiant #{{article.id}}</h2>
+    <img src="{{url_for('static', filename='img/plume.jpeg')}}" class="icone" alt="plume">
+
+    <div class="section">
+        {% if pic_id is none %}
+        <img src="{{url_for('static', filename='img/admin.png')}}" class="photo" alt="admin">
+        {% else %}
+        <img src="/image/{{ pic_id }}.png" class="photo" alt="profil-photo">
+        {% endif %}
+        <div class="user-card">
+            <div class="article-section">
+                <h2 class="article-title">{{ article.titre }}</h2>
+            </div>
+            <div class="article-section">
+                <div class="wrap">
+                    <div class="auteur">
+                        <h4>Auteur:</h4> {{ article.auteur }}
+                    </div>
+                    <div class="id">
+                        <h4>ID: </h4> {{ article.id }}
+                    </div>
+                </div>
+            </div>
+            <div class="courriel">
+                <div>
+                    <h4>Date de publication:</h4>{{ article.date_publication }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contenu-section">
+        <span class="contenu">{{ article.contenu | safe }}</span>
+    </div>
+
+
+
+    <a href="/">Retour à L'accueil</a>
+</div>
+{% endblock %}

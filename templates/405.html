@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}405 Method Not Allowed{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="column-no">
+        <img src="{{url_for('static', filename='img/suspicious.jpeg')}}" class="small" alt="suspicious">
+        <h2 class="erreur">405 Method Not Allowed</h2>
+        <p>Il semble y avoir une erreur, vous avez accedez à cette page d'une manière suspecte.</p>
+        <a href="/">Retour à L'accueil</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form action="/login" method="post">
+        <h2>Connectez-vous</h2>
+        <img src="{{url_for('static', filename='img/user-login-305.png')}}" class="small" alt="admin">
+        <div class="login">
+            <div class="login-container">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" class="input-field"><br>
+            </div>
+            <div class="login-container">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="input-field"><br>
+            </div>
+            {% if message %}
+            <p class="erreur">{{ message }}</p>
+            {% endif %}
+        </div>
+        <input type="submit" value="Se connecter" class="submit-btn">
+    </form>
+</div>
+
+{% endblock %}

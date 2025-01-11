@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container">
+    <h2>Liste des utilisateurs</h2>
+    <div class="column">
+        <img src="img/admin.png" class="icone" alt="admin">
+        <a href="/ajouter-utilisateur">Ajouter utilisateur</a>
+    </div>
+    {% for user in utilisateurs %}
+    <div class="section">
+        {% if user.pic_id is none %}
+        <img src="img/admin.png" class="photo" alt="admin">
+        {% else %}
+        <img src="/image/{{ user.pic_id }}.png" class="photo" alt="photo-profil">
+        {% endif %}
+        <div class="user-card">
+            <div class="article-section">
+                <h2 class="article-title">{{ user.username }}</h2>
+            </div>
+            <div class="article-section">
+                <div class="wrap">
+                    <div class="auteur">
+                        <h4>Prenom:</h4> {{ user.prenom }}
+                    </div>
+                    <div class="id">
+                        <h4>Nom: </h4> {{ user.nom }}
+                    </div>
+                </div>
+            </div>
+            <div class="courriel">
+                <div class="underline">
+                    <h4>Adresse&nbsp;courriel: </h4><span class="break">{{ user.courriel }}</span>
+                </div>
+                <div>
+                    <h4>Statut:</h4>
+                    {% if user.actif %}
+                    Actif
+                    {% else %}
+                    Desactivé
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <form action="/modifier-utilisateur/{{user.id}}" method="get">
+            <button type="submit" class="submit-btn">Modifier</button>
+        </form>
+        <form action="/modifier-statut/{{user.id}}" method="post">
+            <button type="submit" class="submit-btn">
+                {% if user.actif %}
+                Desactiver
+                {% else %}
+                Reactiver
+                {% endif %}</button>
+        </form>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

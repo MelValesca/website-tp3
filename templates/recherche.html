@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block title %}Recherche{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <h2>Il y a {{nb_item}} articles correspondant à '{{recherche}}'</h2>
+    <div class="column-no">
+        <img src="img/loupe.jpeg" class="loupe" alt="loupe">
+        {% for article in articles %}
+        <div class="article-card">
+            <div class="article-section">
+                <h2 class="article-title"><a href="/article/{{ article.id }}">{{ article.titre }}</a></h2>
+            </div>
+            <div class="article-section">
+                <div class="wrap">
+                    <div class="auteur">
+                        <h4>Auteur:</h4> {{ article.auteur }}
+                    </div>
+                    <div class="id">
+                        <h4>ID: </h4> {{ article.id }}
+                    </div>
+                </div>
+            </div>
+            <div class="article-section">
+                <div>
+                    <h4>Date de publication:</h4> {{ article.date_publication }}
+                </div>
+            </div>
+            <div class="article-section">
+                <span class="contenu">{{ article.contenu | safe }}</span>
+            </div>
+        </div>
+
+
+        {% endfor %}
+        <a href="/" class="margin-top">Retour à L'accueil</a>
+    </div>
+</div>
+{% endblock %}

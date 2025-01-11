@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+
+<div class="recherche">
+    <div class="column-no">
+        <div class="row">
+            <form id="recherche-id" method="POST" action="/recherche">
+                <label for="recherche">Rechercher l'article que vous désirez : </label>
+                <input id="recherche" type="text" name="recherche" placeholder="minimum 3 caractères">
+                <button type="submit" name="recherche" class="chercher-btn">
+                    chercher
+                </button>
+        </div>
+        <span id="error-message" class="erreur">{{ erreur }}</span>
+    </div>
+    </form>
+</div>
+
+<div class="container">
+    <h2>Articles récents</h2>
+    <img src="img/articles.jpeg" class="icone" alt="articles">
+    {% for article in derniers_articles[:5] %}
+    <div class="article-card">
+        <div class="article-section">
+            <h2 class="article-title">{{ article.titre }}</h2>
+        </div>
+        <div class="article-section">
+            <div class="wrap">
+                <div class="auteur">
+                    <h4>Auteur:</h4> {{ article.auteur }}
+                </div>
+                <div class="id">
+                    <h4>ID: </h4> {{ article.id }}
+                </div>
+            </div>
+        </div>
+        <div class="article-section">
+            <div>
+                <h4>Date de publication:</h4> {{ article.date_publication }}
+            </div>
+        </div>
+        <div class="article-section">
+            <span class="contenu">{{ article.contenu | safe }}</span>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+{% endblock %}

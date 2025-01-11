@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}Modifier Utilisateur{% endblock %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<div class="container">
+    <h2>Modifier l'utilisateur {{ user.username }}</h2>
+    <img src="{{url_for('static', filename='img/typing.jpeg')}}" class="icone" alt="clavier">
+
+    <form action="/modifier-utilisateur/{{ user.id }}" method="post" enctype="multipart/form-data" id="modify-user">
+        <div class="article">
+            <label for="photo-modifier">Choisir une photo de profile :</label>
+            <input type="file" name="photo" id="photo-modifier" accept=".png">
+            <span id="error-photo-modifier" class="erreur">{{erreurs.photo}}</span>
+
+            <label for="password-modifier">Password: </label>
+            <input type="password" id="password-modifier" name="password">
+            <span id="error-password-modifier" class="erreur">{{erreurs.password}}</span>
+
+            <label for="prenom-modifier">Prenom: </label>
+            <input type="text" id="prenom-modifier" name="prenom" value="{{ valeurs.prenom }}">
+            <span id="error-prenom-modifier" class="erreur">{{erreurs.prenom}}</span>
+
+            <label for="nom-modifier">Nom: </label>
+            <input type="text" id="nom-modifier" name="nom" value="{{ valeurs.nom }}">
+            <span id="error-nom-modifier" class="erreur">{{erreurs.nom}}</span>
+
+            <label for="courriel-modifier">Courriel: </label>
+            <input type="text" id="courriel-modifier" name="courriel" value="{{ valeurs.courriel }}">
+            <span id="error-courriel-modifier" class="erreur">{{erreurs.courriel}}</span>
+        </div>
+        <input type="submit" value="Modifier" class="submit-btn">
+    </form>
+
+    <a href="/">Retour à L'accueil</a>
+</div>
+
+{% endblock %}

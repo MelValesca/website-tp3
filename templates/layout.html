@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+    <script src="{{url_for('static', filename='app.js')}}"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="header-text">Article Hub</h1>
+        <a href="/admin" class="header-link">Administrateur</a>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 INF5190. Tout droits réservés.</p>
+        <p>Fait par Mélissa Vallée</p>
+    </footer>
+
+</body>
+
+</html>

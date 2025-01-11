@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container">
+    <h2>Liste des articles</h2>
+    <img src="img/admin.png" class="icone" alt="icone">
+    {% for article in articles %}
+    <div class="article-card">
+        <div class="article-section">
+            <h2 class="article-title">{{ article.titre }}</h2>
+        </div>
+        <div class="article-section">
+            <div class="wrap">
+                <div class="auteur">
+                    <h4>Auteur:</h4> {{ article.auteur }}
+                </div>
+                <div class="id">
+                    <h4>ID: </h4> {{ article.id }}
+                </div>
+            </div>
+        </div>
+        <div class="article-section">
+            <div>
+                <h4>Date de publication:</h4> {{ article.date_publication }}
+            </div>
+        </div>
+        <div class="article-section">
+            <div class="contenu">{{ article.contenu | safe }}</div>
+        </div>
+    </div>
+    <form action="/modifier-article/{{article.id}}" method="get">
+        <button type="submit" class="submit-btn">Modifier</button>
+    </form>
+    {% endfor %}
+
+</div>
+{% endblock %}

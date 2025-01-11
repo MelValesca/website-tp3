@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %}Ajouter article{% endblock %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container">
+    <form id="article-form" action="/submit_article" method="post">
+        <h2>Ajouter un article</h2>
+        <div class="article">
+            <label for="titre-nouveau">Titre:</label>
+            <input type="text" id="titre-nouveau" name="titre" value="{{valeurs.titre}}">
+            <span id="error-titre" class="erreur">{{erreurs.titre}}</span>
+
+            <label for="date-publication-nouveau">Date de publication:</label>
+            <input type="date" id="date-publication-nouveau" name="date_publication"
+                value="{{valeurs.date_publication}}">
+            <span id="error-date" class="erreur">{{erreurs.date_publication}}</span>
+
+            <label for="contenu-nouveau">Contenu:</label>
+            <textarea id="contenu-nouveau" name="contenu" class="text">{{valeurs.contenu}}</textarea>
+            <span id="error-contenu" class="erreur">{{erreurs.contenu}}</span>
+        </div>
+        <input type="submit" value="Ajouter" class="submit-btn">
+    </form>
+</div>
+
+{% endblock %}

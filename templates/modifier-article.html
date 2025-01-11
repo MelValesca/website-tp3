@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}Modifier Article{% endblock %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<div class="container">
+    <h2>Modifier l'article {{ article.id }}</h2>
+    <img src="{{url_for('static', filename='img/typing.jpeg')}}" class="icone" alt="clavier">
+
+    <form id="modifier-article" action="/modifier-article/{{ article.id }}" method="post">
+        <div class="article">
+            <label for="titre-modifier">Titre: </label>
+            <input type="text" id="titre-modifier" name="titre" value="{{ valeurs.titre }}">
+            <span id="error-titre-modifier" class="erreur">{{erreurs.titre}}</span>
+
+            <label for="contenu-modifier">Contenu:</label>
+            <textarea id="contenu-modifier" name="contenu" class="text">{{ valeurs.contenu }}</textarea>
+            <span id="error-contenu-modifier" class="erreur">{{erreurs.contenu}}</span>
+        </div>
+        <input type="submit" value="Modifier" class="submit-btn">
+    </form>
+
+    <a href="/">Retour à L'accueil</a>
+</div>
+
+{% endblock %}
