@@ -13,11 +13,11 @@ python3 -m venv env
 * Sous Windows : `env\Scripts\activate`
 * Sous MacOS, Linux : `source env/bin/activate`
 
-3. Installez Flask :
+3. Installez les dépendances :
 
 
 ```sh
-pip install Flask
+pip3 install -r requirements.txt
 ```
 
 4. Démarrez le serveur avec la commande make :
